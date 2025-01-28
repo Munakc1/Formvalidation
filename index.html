@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins&family=Smooch+Sans:wght@100..900&family=Varela+Round&display=swap');
+
+        .container{
+            background-color: lightblue;
+            color: black;
+            display: flex;
+            align-items: center;
+            font-size: medium;
+            height: 25vh;
+            width: 20vw;
+           
+        }
+        form input{
+            padding: 3px;
+            margin: 3px;
+        }
+          form input[type = "submit"] {
+            background-color: black;
+            color: white;
+            border-radius: 33px;
+           
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <form onsubmit="return data()" action="abc.html">
+        <br>
+        Username: <input type="text" id="n1">
+        <br>
+        Contact: <input type="text" id="n2">
+        <br>
+        Password: <input type="password" id="n3">
+        <br>
+        Confirm Password: <input type="password" id="n4">
+        <br>
+        <input type="submit" value="Submit your Data">
+  
+    </form>
+</div>
+
+    <script>
+        function data() {
+            let a = document.getElementById("n1").value.trim();
+            let b = document.getElementById("n2").value.trim();
+            let c = document.getElementById("n3").value.trim();
+            let d = document.getElementById("n4").value.trim();
+
+            // Check if any field is empty
+            if (a === "" || b === "" || c === "" || d === "") {
+                alert("All fields are mandatory. Please fill them out.");
+                return false;
+            }
+
+            // Check if contact number is 10 digits and contains only numbers
+            if (b.length !== 10 || isNaN(b)) {
+                alert("Contact number must be exactly 10 digits and contain only numbers.");
+                return false;
+            }
+
+            // Check if passwords match
+            if (c !== d) {
+                alert("Passwords do not match. Please try again.");
+                return false;
+            }
+
+            // If all validations pass
+            alert("Form submitted successfully!");
+            return true;
+        }
+    </script>
+</body>
+</html>
